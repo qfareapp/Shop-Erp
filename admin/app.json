@@ -1,0 +1,19 @@
+{
+  "expo": {
+    "name": "Shop ERP Admin",
+    "slug": "shop-erp-admin",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#f4efe5"
+    },
+    "android": {
+      "package": "com.shoperp.admin"
+    },
+    "ios": {
+      "bundleIdentifier": "com.shoperp.admin"
+    }
+  }
+}
