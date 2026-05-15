@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: shop-erp-api
+    runtime: node
+    rootDir: api
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 22
+      - key: PORT
+        value: 10000
+      - key: MONGODB_URI
+        sync: false
+      - key: GOOGLE_CLOUD_VISION_CREDENTIALS
+        sync: false

@@ -884,9 +884,22 @@ function escapeRegex(value) {
 }
 
 function createVisionClient() {
+  const inlineCredentials =
+    process.env.GOOGLE_CLOUD_VISION_CREDENTIALS ||
+    process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON;
   const keyFilename =
     process.env.GOOGLE_APPLICATION_CREDENTIALS ||
     process.env.GOOGLE_CLOUD_VISION_KEY_FILE;
+
+  if (inlineCredentials) {
+    try {
+      return new vision.ImageAnnotatorClient({
+        credentials: JSON.parse(inlineCredentials),
+      });
+    } catch (error) {
+      throw new Error(`Invalid Google Vision credentials JSON: ${error.message}`);
+    }
+  }
 
   if (keyFilename) {
     return new vision.ImageAnnotatorClient({ keyFilename });

@@ -99,7 +99,8 @@ type OcrSuggestionResponse = {
 
 type AppTab = 'home' | 'products' | 'billing' | 'inventory' | 'profile';
 
-const defaultApiUrl = 'http://192.168.16.20:4000';
+const defaultApiUrl =
+  process.env.EXPO_PUBLIC_API_URL?.trim() || 'http://127.0.0.1:4000';
 const defaultShopCode = 'shop-demo-001';
 
 const emptyProductForm: ProductFormState = {

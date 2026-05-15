@@ -29,6 +29,37 @@ npm run dev
 
 If Google Vision credentials are missing or invalid, `POST /api/products/ocr-suggest` returns a setup error.
 
+## Deployment
+
+### Render API
+
+The repo includes a root [`render.yaml`](./render.yaml) for the `api` service.
+
+Set these Render environment variables:
+
+- `MONGODB_URI`
+- `GOOGLE_CLOUD_VISION_CREDENTIALS`
+
+`GOOGLE_CLOUD_VISION_CREDENTIALS` should contain the full Google service-account JSON as a single env var value.
+
+### Vercel frontend
+
+Both Expo apps can be deployed to Vercel as static web exports:
+
+- `admin/vercel.json`
+- `mobile/vercel.json`
+
+For each Vercel project:
+
+1. Set the project root to `admin` or `mobile`.
+2. Set `EXPO_PUBLIC_API_URL` to your deployed Render API URL, for example:
+
+```bash
+https://your-render-service.onrender.com
+```
+
+3. Deploy with the included `npm run build:web` command.
+
 ## Mobile setup
 
 1. Start the Expo app:
@@ -38,9 +69,9 @@ cd mobile
 npm start
 ```
 
-2. Both Expo apps are hardcoded to use:
+2. Set `EXPO_PUBLIC_API_URL` if you are not using the local default:
 
-- `http://192.168.16.20:4000`
+- `http://127.0.0.1:4000`
 
 ## Phase 1 capabilities
 
