@@ -99,8 +99,10 @@ type OcrSuggestionResponse = {
 
 type AppTab = 'home' | 'products' | 'billing' | 'inventory' | 'profile';
 
+const localApiUrl = 'http://192.168.16.20:4000';
+const renderApiUrl = 'https://shop-erp-4iwu.onrender.com';
 const defaultApiUrl =
-  process.env.EXPO_PUBLIC_API_URL?.trim() || 'http://127.0.0.1:4000';
+  process.env.EXPO_PUBLIC_API_URL?.trim() || (__DEV__ ? localApiUrl : renderApiUrl);
 const defaultShopCode = 'shop-demo-001';
 
 const emptyProductForm: ProductFormState = {
